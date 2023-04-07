@@ -2,37 +2,62 @@ package com.brownik.sockettest.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import com.brownik.sockettest.R
 import com.brownik.sockettest.databinding.ActivityMainBinding
-import io.socket.client.Socket
+import com.brownik.sockettest.socket.SocketConstants
+import com.brownik.sockettest.socket.SocketStateListener
+import com.brownik.sockettest.util.ShowToast
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val serverUrl = "http://61.80.148.23:3001/"
-    private var socket: Socket? = null
+    private var socketListener: SocketStateListener? = null
+    private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.lifecycleOwner = this@MainActivity
+        binding.viewModel = mainViewModel
 
+        setViewModel()
+        setSocketListener()
         addOnClickListener()
+    }
+
+    private fun setViewModel() = with(mainViewModel) {
+        socketConnect.observe(this@MainActivity, Observer {
+            val text =
+                if (it) R.string.socket_connect
+                else R.string.socket_disconnect
+            ShowToast.short(this@MainActivity, getString(text))
+        })
+
+        authResult.observe(this@MainActivity, Observer {
+            if (it) addFragment()
+        })
     }
 
     private fun addOnClickListener() = with(binding) {
         btnSocket.setOnClickListener {
-
+            if (mainViewModel.socketConnect.value == false) mainViewModel.requestSocketConnect()
+            else mainViewModel.requestSocketDisconnect()
         }
 
         btnSend.setOnClickListener {
-
+            if (mainViewModel.authResult.value == false)
+                mainViewModel.requestAuth(SocketConstants.CHAT_TYPE_LOBBY, etMemNo.text.toString())
         }
     }
 
-    private fun showToast(text: String) {
-        runOnUiThread {
-            Toast.makeText(this@MainActivity, text, Toast.LENGTH_SHORT).show()
-        }
+    private fun setSocketListener() {
+        mainViewModel.setSocketListener()
+    }
+
+    private fun addFragment() {
+
     }
 }

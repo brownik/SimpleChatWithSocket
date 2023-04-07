@@ -1,9 +1,7 @@
 package com.brownik.sockettest.socket
 
 import android.annotation.SuppressLint
-import android.util.Log
-import com.brownik.sockettest.model.ResponseAuth
-import com.google.gson.Gson
+import com.brownik.sockettest.util.BaseLog
 import io.socket.client.IO
 import io.socket.client.Manager
 import io.socket.client.Socket
@@ -27,6 +25,7 @@ class SocketSession {
     }
 
     private var socket: Socket? = null
+    private var listener: SocketStateListener? = null
 
     fun connect() {
         val option = IO.Options().apply {
@@ -72,25 +71,33 @@ class SocketSession {
         socket = null
     }
 
+    fun setSocketListener(listener: SocketStateListener) {
+        this.listener = listener
+    }
+
     private val onMessageReceiver = Emitter.Listener {
-        val data = Gson().fromJson(it.first().toString(), ResponseAuth::class.java)
-        makeLog("onMessageReceiver", "ReceiveMessage $data")
+        val data = it.first().toString()
+        BaseLog.d("onMessageReceiver: $data")
+        listener?.onReceiveMessage(data)
     }
 
     private val onConnect = Emitter.Listener {
-        makeLog("onConnect", it.toString())
+        BaseLog.d("onConnect: $it")
+        listener?.onConnect()
     }
 
     private val onDisconnect = Emitter.Listener {
-        makeLog("onDisconnect", it.toString())
+        BaseLog.d("onDisconnect: $it")
+        listener?.onDisConnect()
     }
 
     private val onError = Emitter.Listener {
         it.takeIf { it.isNotEmpty() }?.run {
-            makeLog("onError", it[0].toString())
+            BaseLog.d("onError: ${it.first()}")
         } ?: run {
-            makeLog("onError", "")
+            BaseLog.d("onError")
         }
+        listener?.onError()
     }
 
     private val trustAllCerts = arrayOf<TrustManager>(
@@ -121,9 +128,5 @@ class SocketSession {
 
         return OkHttpClient.Builder().hostnameVerifier(hostnameVerifier)
             .sslSocketFactory(sslSocketFactory, trustManager).build()
-    }
-
-    private fun makeLog(functionName: String, data: String) {
-        Log.d("SocketSession", "$functionName: $data")
     }
 }

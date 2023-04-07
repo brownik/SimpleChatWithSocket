@@ -1,60 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+<layout>
 
-    <EditText
-        android:id="@+id/etAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="http://61.80.148.23:3001/"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <Button
-        android:id="@+id/btnSocket"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="200dp"
-        android:text="연결"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="viewModel"
+            type="com.brownik.sockettest.ui.MainViewModel" />
 
-    <EditText
-        android:id="@+id/etText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSocket" />
+    </data>
 
-    <Button
-        android:id="@+id/btnSend"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:text="보내기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etText" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.brownik.sockettest.ui.MainActivity">
 
-    <TextView
-        android:id="@+id/tvMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="message"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSend" />
+        <Button
+            android:id="@+id/btnSocket"
+            setText="@{viewModel.socketConnect.booleanValue()}"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/etMemNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:hint="@string/hint_auth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSocket" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/btn_auth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etMemNo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
