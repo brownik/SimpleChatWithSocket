@@ -2,6 +2,7 @@ package com.brownik.sockettest.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.brownik.sockettest.R
@@ -30,9 +31,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setViewModel() = with(mainViewModel) {
         socketConnect.observe(this@MainActivity, Observer {
-            val text =
-                if (it) R.string.socket_connect
-                else R.string.socket_disconnect
+            var text = 0
+            if (it) {
+                text = R.string.socket_connect
+                window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+            } else {
+                text = R.string.socket_disconnect
+                window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+            }
             ShowToast.short(this@MainActivity, getString(text))
         })
 

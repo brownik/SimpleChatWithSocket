@@ -50,7 +50,7 @@ class SocketSession {
             on(Socket.EVENT_CONNECT_ERROR, onError)
             on(Socket.EVENT_DISCONNECT, onDisconnect)
             on(Manager.EVENT_ERROR, onError)
-            on("Lobby", onMessageReceiver)
+            on(SocketConstants.CHAT_TYPE_LOBBY, onMessageReceiver)
         }
 
         socket?.connect()

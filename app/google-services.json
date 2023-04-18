@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "103457619846",
+    "project_id": "socketchatting",
+    "storage_bucket": "socketchatting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103457619846:android:54b202419d416431f5b607",
+        "android_client_info": {
+          "package_name": "com.brownik.sockettest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103457619846-nu9do44c7m6n61avehgmujs7es0ocf3p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.brownik.sockettest",
+            "certificate_hash": "e742253a800c2071baf9b66e352ff1396e609a9f"
+          }
+        },
+        {
+          "client_id": "103457619846-t0alcqvl34mnuejgo81bhl2agk2bvhke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPGCeM6xF_1Aw5a9ELqhd0i21LqQeCixg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103457619846-t0alcqvl34mnuejgo81bhl2agk2bvhke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
