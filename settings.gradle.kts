@@ -33,3 +33,4 @@ include (
     ":core:core-database",
     ":core:core-network",
 )
+include(":common:common-socket")

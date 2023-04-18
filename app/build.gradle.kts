@@ -54,6 +54,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.common.commonBase)
+    implementation(projects.common.commonSocket)
 
     implementation(libs.androidx.core)
     implementation(libs.androidx.multidex)
@@ -75,5 +77,24 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.legacy.support)
 
+    // Firebase
+    implementation(platform(libs.google.firebase))
+    implementation(libs.google.firebase.messaging) // 파이어베이스 : 메세징
+
     implementation(libs.google.gson) // Gson
+
+    // coroutine
+    implementation(libs.coroutine.core)
+    implementation(libs.coroutine.android)
+
+    // 에뮬레이터 체크
+    implementation(libs.antifake)
+
+    // 루팅 체크
+    implementation(libs.rootbeer)
+
+    /* AnKo */
+    implementation(libs.anko.commons)
+    implementation(libs.anko.sdk25)
+    implementation("com.google.firebase:firebase-database-ktx:20.2.0")
 }

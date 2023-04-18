@@ -29,6 +29,7 @@
             <option value="$PROJECT_DIR$/common/common-base" />
             <option value="$PROJECT_DIR$/common/common-model" />
             <option value="$PROJECT_DIR$/common/common-resource" />
+            <option value="$PROJECT_DIR$/common/common-socket" />
             <option value="$PROJECT_DIR$/common/common-util" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/core-data" />

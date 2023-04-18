@@ -1,7 +1,6 @@
 plugins {
     id("brownik.android.library")
     id("brownik.android.hilt")
-    id("com.google.gms.google-services")
 }
 
 android {
