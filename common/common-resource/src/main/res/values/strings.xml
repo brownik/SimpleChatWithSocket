@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SocketTest</string>
+
+    <string name="socket_connect">Socket Server OnConnected</string>
+    <string name="socket_disconnect">Socket Server OnDisconnected</string>
+
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="btn_go_sign_up">Go Sign Up</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="btn_id_check">중복 확인</string>
+    <string name="btn_id_check_complete">사용 가능</string>
+
+    <string name="btn_connect">연결하기</string>
+    <string name="btn_disconnect">연결끊기</string>
+    <string name="btn_send">보내기</string>
+    <string name="btn_auth">인증하기</string>
+
+    <string name="hint_id">아이디 입력</string>
+    <string name="hint_password">비밀번호 입력</string>
+    <string name="hint_password_check">비밀번호 확인</string>
+    <string name="hint_auth">회원 번호 입력</string>
+</resources>

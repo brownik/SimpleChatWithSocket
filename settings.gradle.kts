@@ -28,9 +28,10 @@ include (
     ":common:common-base",
     ":common:common-model",
     ":common:common-resource",
+    ":common:common-socket",
     ":common:common-util",
     ":core:core-data",
     ":core:core-database",
     ":core:core-network",
+    ":feature:feature-sign",
 )
-include(":common:common-socket")

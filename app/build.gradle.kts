@@ -27,7 +27,7 @@ android {
         versionName = VersionConstants.VERSION_NAME
     }
 
-    // kotlin 주석 처리 도구 인 kaptlin이 주석 처리 중에 발생한 오류를 보고 할 때 생성 된 Java 스텁 대신 원래 Kotlin 코드의 위치에 대한 링크를 제공.
+    // kotlin 주석 처리 도구 인 kaptlin이 주석 처리 중에 발생한 오류를 보고할 때 생성된 Java 스텁 대신 원래 Kotlin 코드의 위치에 대한 링크를 제공.
     kapt {
         mapDiagnosticLocations = true
         correctErrorTypes = true
@@ -56,6 +56,7 @@ android {
 dependencies {
     implementation(projects.common.commonBase)
     implementation(projects.common.commonSocket)
+    implementation(projects.feature.featureSign)
 
     implementation(libs.androidx.core)
     implementation(libs.androidx.multidex)
@@ -96,5 +97,4 @@ dependencies {
     /* AnKo */
     implementation(libs.anko.commons)
     implementation(libs.anko.sdk25)
-    implementation("com.google.firebase:firebase-database-ktx:20.2.0")
 }
